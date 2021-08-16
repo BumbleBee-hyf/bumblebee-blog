@@ -1,0 +1,60 @@
+#HeadNav{
+  height: 50px;
+  background: #444444;
+  color: #fff;
+  .nav-wrap{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    .nav-logo-wrap{
+      display: inline-block;
+      font-size: 26px;
+      vertical-align: top;
+      margin-left: 12px;
+      margin-top: 4px;
+      span{
+        margin-left: 20px;
+        float: left;
+        color: transparent;
+        text-shadow:0 0 6px #F96, -1px -1px  #FFF, 1px -1px  #444;
+      }
+    }
+    .nav-list-wrap{
+      width: 60%;
+      display: inline-block;
+      height:50px;
+      text-align:right;
+      .ant-menu{
+        color: #fff;
+        background: transparent;
+        display: inline-block;
+        height:50px;
+      }
+      .ant-menu-item:not(.ant-menu-item-selected){
+        a{
+          color: #fff;
+        }
+
+      }
+      .ant-menu-horizontal{
+        border-color: transparent;
+      }
+      .ant-menu-horizontal .ant-menu-item, .ant-menu-horizontal .ant-menu-submenu{
+        margin-top:0;
+      }
+      .ant-menu-horizontal{
+        line-height:47px;
+      }
+    }
+    .nav-list-user{
+      font-size: 14px;
+      line-height: 50px;
+      width: 200px;
+      button{
+        color: #fff;
+        background: #444444;
+      }
+    }
+  }
+}
