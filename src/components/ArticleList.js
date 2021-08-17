@@ -43,7 +43,7 @@ export  default class ArticleList extends Component{
                         >
                             <List.Item.Meta
                                 title={<a href={item.href}>{item.title}</a>}
-                                description={item.description}
+                                description={item.createTime}
                             />
                             <div dangerouslySetInnerHTML={{__html: item.html}}></div>
                         </List.Item>

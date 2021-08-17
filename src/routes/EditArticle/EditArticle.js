@@ -1,19 +1,25 @@
 import React, {Component} from  'react';
 import ReactWEditor from 'wangeditor-for-react';
-import {Button, message} from "antd";
+import {Button, message, Input} from "antd";
+import moment from 'moment';
+import 'moment/locale/zh-cn';
 import axios from "axios";
 export  default class EditArticle extends Component{
     render() {
         const configOjb = {
-            height: 700
+            height: 600
         }
-        let currentText = '';
+        let articleObj = {
+            html: '',
+            title: ''
+        }
         function createArticle() {
             const param = {
                 LikeOut: 0,
                 MessageOut: 0,
-                title: 'test',
-                html: currentText
+                title: articleObj.title,
+                html: articleObj.html,
+                createTime: moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
             }
             axios.post('/api/article', param).then(
                 (res) => {
@@ -23,9 +29,11 @@ export  default class EditArticle extends Component{
         }
         return(
             <>
+                <Input placeholder='请输入标题' allowClear  onChange={(e) => {
+                    articleObj.title = e.target.value;
+                }}/>
                 <ReactWEditor
                     config={configOjb}
-                    defaultValue={'<h1>标题</h1>'}
                     linkImgCallback={(src,alt,href) => {
                         // 插入网络图片的回调事件
                         console.log('图片 src ', src)
@@ -38,7 +46,7 @@ export  default class EditArticle extends Component{
                     }}
                     onChange={(html) => {
                         console.log('onChange html:', html);
-                        currentText = html;
+                        articleObj.html = html;
 
                     }}
                     onBlur={(html) => {
@@ -49,7 +57,7 @@ export  default class EditArticle extends Component{
                         console.log('onFocus html:', html)
                     }}
                 />
-                <Button type="primary" onClick={createArticle}>提交文章</Button>
+                <Button type="primary"  onClick={createArticle}>提交文章</Button>
             </>
         )
     }
