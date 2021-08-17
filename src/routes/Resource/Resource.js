@@ -3,7 +3,7 @@
 * created：2021-8-9
 * */
 import React, {Component} from  'react';
-import ArticleList from "../../components/ArticleList";
+import ArticleList from "../../components/ArticleList/ArticleList";
 export  default class Resource extends Component{
     constructor(props){
         super(props);

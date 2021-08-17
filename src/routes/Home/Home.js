@@ -5,7 +5,7 @@
 import React, {Component} from  'react';
 import {Tag, Divider, Row, Col} from 'antd';
 import {GithubOutlined, WeiboCircleOutlined} from '@ant-design/icons';
-import ArticleList from "../../components/ArticleList";
+import ArticleList from "../../components/ArticleList/ArticleList";
 export default class Home extends Component{
     constructor(props){
         super(props);
@@ -50,26 +50,6 @@ export default class Home extends Component{
                         <Tag color="lime">lime</Tag>
                     </div>
                     <Divider orientation="left">Custom</Divider>
-                    <div>
-                        <Tag color="#f50">#f50</Tag>
-                        <Tag color="#2db7f5">#2db7f5</Tag>
-                        <Tag color="#87d068">#87d068</Tag>
-                        <Tag color="#108ee9">#108ee9</Tag>
-                    </div>
-                    <Divider orientation="left">Custom</Divider>
-                    <div>
-                        <Tag color="#f50">#f50</Tag>
-                        <Tag color="#2db7f5">#2db7f5</Tag>
-                        <Tag color="#87d068">#87d068</Tag>
-                        <Tag color="#108ee9">#108ee9</Tag>
-                    </div>
-                    <Divider orientation="left">Custom</Divider>
-                    <div>
-                        <Tag color="#f50">#f50</Tag>
-                        <Tag color="#2db7f5">#2db7f5</Tag>
-                        <Tag color="#87d068">#87d068</Tag>
-                        <Tag color="#108ee9">#108ee9</Tag>
-                    </div><Divider orientation="left">Custom</Divider>
                     <div>
                         <Tag color="#f50">#f50</Tag>
                         <Tag color="#2db7f5">#2db7f5</Tag>
