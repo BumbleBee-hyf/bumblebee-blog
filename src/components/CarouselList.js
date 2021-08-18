@@ -10,10 +10,6 @@ export  default class CarouselList extends Component{
 
     }
     render() {
-        // 背景样式
-        const contentStyle = {
-            height: '850px',
-        };
         // 图片样式
         const imgStyle ={
             'object-fit':'cover',
@@ -23,22 +19,22 @@ export  default class CarouselList extends Component{
         return(
             <Carousel afterChange={this.onChange()} autoplay>
                 <div>
-                    <h3 style={contentStyle}>  <img style={imgStyle}
+                    <h3 style={this.props.currentStyle}>  <img style={imgStyle}
                                                     src="https://bumblebee.zone/download/Carousel4.jpg"
                     /></h3>
                 </div>
                 <div>
-                    <h3 style={contentStyle}>  <img style={imgStyle}
+                    <h3 style={this.props.currentStyle}>  <img style={imgStyle}
                                                     src="https://bumblebee.zone/download/Carousel2.jpg"
                     /></h3>
                 </div>
                 <div>
-                    <h3 style={contentStyle}>  <img style={imgStyle}
+                    <h3 style={this.props.currentStyle}>  <img style={imgStyle}
                                                     src="https://bumblebee.zone/download/Carousel3.jpg"
                     /></h3>
                 </div>
                 <div>
-                    <h3 style={contentStyle}>  <img style={imgStyle}
+                    <h3 style={this.props.currentStyle}>  <img style={imgStyle}
                                                     src="https://bumblebee.zone/download/Carousel1.jpg"
                     /></h3>
                 </div>

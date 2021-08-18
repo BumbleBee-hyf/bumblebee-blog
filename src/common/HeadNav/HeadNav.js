@@ -8,23 +8,16 @@ import './HeadNav.less'
 import {Link} from "react-router-dom";
 import { EditOutlined, UserOutlined } from '@ant-design/icons';
 export default class HeadNav extends Component {
-    state = {
-        current: 'home',
-        currentName: localStorage.getItem('username')
+    constructor(props){
+        super(props);
+        this.state = {
+            currentName: localStorage.getItem('username')
+        }
     }
-    handleClick=(e)=>{ //点击事件
-        this.setState({current:e.key});
-    }
-    // 初始化url
-    init() {
-        const hash = window.location.hash.split('/');
-        const key = hash[hash.length -1];
-        this.setState({current: key});
-    }
-    componentDidMount() {
-        this.init();
-    }
-    handleMenuClick(e) {
+ /*   handleClick=(e)=>{ //点击事件
+        this.props.current = e.key;
+    }*/
+    handleMenuClick = (e) => {
         localStorage.clear();
     }
     classStyle = {
@@ -57,9 +50,8 @@ export default class HeadNav extends Component {
                     </div>
                     <div className="nav-list-wrap">
                         <Menu
-                            selectedKeys={[this.state.current]}
+                            selectedKeys={[this.props.current || 'home']}
                             mode="horizontal"
-                            onClick={this.handleClick}
                         >
                             <Menu.Item key="home" >
                                 <Link  to="/home">首页</Link>

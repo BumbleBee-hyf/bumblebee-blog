@@ -8,11 +8,14 @@ import CarouselList from "../../components/CarouselList";
 import UserInfo from "../../components/UserInfo";
 export  default class About extends Component{
     render() {
+        const contentStyle = {
+            height: '750px',
+        };
         return(
             <div id='about'>
                 <Row  gutter={[8, 16]}>
                     <Col span={12}>
-                       <CarouselList/>
+                       <CarouselList currentStyle={contentStyle}/>
                     </Col>
                     <Col span={12}>
                         <UserInfo/>
