@@ -1,7 +1,7 @@
 import React, {Component} from  'react';
 import axios from "axios";
 import Layout, {Content, Footer, Header} from "antd/es/layout/layout";
-import { ArrowLeftOutlined } from '@ant-design/icons';
+import {ArrowLeftOutlined, EyeOutlined, LikeOutlined, MessageOutlined} from '@ant-design/icons';
 import './ArticleDetail.less'
 import ArticleCommentList from "../../components/ArticleCommentList";
 import {Divider} from "antd";
@@ -43,9 +43,17 @@ export  default class ArticleDetail extends Component {
                             <ArrowLeftOutlined />
                         </div>
                         <div>{this.state.articleDetail.title}</div>
-                        <div>{this.state.articleDetail.createTime}</div>
+                        <div>
+                            <LikeOutlined />
+                        </div>
                     </Header>
                     <Content style={styleContent}>
+                        <div>
+                            {this.state.articleDetail.createTime}
+                            <LikeOutlined /><span>{this.state.articleDetail.LikeOut || 0}</span>
+                            <EyeOutlined /><span>{this.state.articleDetail.EyeOut || 0}</span>
+                            <MessageOutlined /><span>{this.state.articleDetail.MessageOut || 0}</span></div>
+                        <Divider />
                         <div class='articleStyle' dangerouslySetInnerHTML={{__html: this.state.articleDetail.html}}></div>
                         <Divider />
                         <ArticleCommentList/>

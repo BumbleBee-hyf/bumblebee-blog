@@ -20,7 +20,7 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
         </Form.Item>
         <Form.Item>
             <Button htmlType="submit" loading={submitting} onClick={onSubmit} type="primary">
-                Add Comment
+                提交评论
             </Button>
         </Form.Item>
     </>
@@ -67,26 +67,32 @@ export  default class ArticleCommentList extends Component{
 
     render() {
         const { comments, submitting, value } = this.state;
-
+        const avatarStyle = {
+            height: '50px',
+            'line-height': '50px',
+            'background': 'cornflowerblue',
+            'color': '#fff',
+            'width': '50px',
+            'border-radius': '30px',
+            'font-size': '12px',
+        }
+        const sumbitComment =  <Comment
+            avatar={
+                <div style={avatarStyle}>{localStorage.getItem('username')}</div>
+            }
+            content={
+                <Editor
+                    onChange={this.handleChange}
+                    onSubmit={this.handleSubmit}
+                    submitting={submitting}
+                    value={value}
+                />
+            }
+        />
         return (
             <>
                 {comments.length > 0 && <CommentList comments={comments} />}
-                <Comment
-                    avatar={
-                        <Avatar
-                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                            alt="Han Solo"
-                        />
-                    }
-                    content={
-                        <Editor
-                            onChange={this.handleChange}
-                            onSubmit={this.handleSubmit}
-                            submitting={submitting}
-                            value={value}
-                        />
-                    }
-                />
+                {localStorage.getItem('username') ? sumbitComment: null}
             </>
         );
     }

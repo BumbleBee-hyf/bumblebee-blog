@@ -22,6 +22,7 @@ export  default class EditArticle extends Component{
         const createArticle = () =>{
             const param = {
                 LikeOut: 0,
+                EyeOut: 0,
                 MessageOut: 0,
                 title: articleObj.title,
                 html: articleObj.html,

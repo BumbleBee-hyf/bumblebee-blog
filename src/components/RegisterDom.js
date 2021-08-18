@@ -8,7 +8,7 @@ import axios from 'axios'
 export  default class RegisterDom extends Component {
     // 注册用户
     registerData(value) {
-       const body = {
+        const body = {
             account: value.account,
             username: value.username,
             password: value.password
@@ -19,16 +19,17 @@ export  default class RegisterDom extends Component {
             }
         )
     }
+
     render() {
         // 提交表单
         const onFinish = (values) => {
-          const num = this.props.userList.filter(user => user.account === values.account).length;
-          if (!num && values.passwordNew === values.password) {
-             this.registerData(values);
-             this.props.callback('success');
-          } else {
-              message.error('数据有问题！');
-          }
+            const num = this.props.userList.filter(user => user.account === values.account).length;
+            if (!num && values.passwordNew === values.password) {
+                this.registerData(values);
+                this.props.callback('success');
+            } else {
+                message.error('数据有问题！');
+            }
         };
 
         const onFinishFailed = (errorInfo) => {
@@ -45,41 +46,41 @@ export  default class RegisterDom extends Component {
             <Form
                 name="basic"
                 className="register-form"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
+                labelCol={{span: 8}}
+                wrapperCol={{span: 16}}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
             >
                 <Form.Item
                     label="登录账户"
                     name="account"
-                    rules={[{ required: true, message: '请输入登录账户!' }]}
+                    rules={[{required: true, min: 5, max: 20}]}
                 >
-                    <Input />
+                    <Input/>
                 </Form.Item>
                 <Form.Item
                     label="用户名"
                     name="username"
-                    rules={[{ required: true, message: '请输入用户名!' }]}
+                    rules={[{required: true, max: 4}]}
                 >
-                    <Input />
+                    <Input/>
                 </Form.Item>
                 <Form.Item
                     label="密码"
                     name="password"
-                    rules={[{ required: true, message: '请输入密码!' }]}
+                    rules={[{required: true, min: 8, max: 20}]}
                 >
-                    <Input.Password />
+                    <Input.Password/>
                 </Form.Item>
 
                 <Form.Item
                     label="重复密码"
                     name="passwordNew"
-                    rules={[{ required: true, message: '请输入重复密码!' }]}
+                    rules={[{required: true, message: '请输入重复密码!'}]}
                 >
-                    <Input.Password />
+                    <Input.Password/>
                 </Form.Item>
-                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                <Form.Item wrapperCol={{offset: 8, span: 16}}>
                     <Button type="primary" htmlType="submit">
                         注册
                     </Button>
