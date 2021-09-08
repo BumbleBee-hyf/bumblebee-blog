@@ -23,7 +23,7 @@ export default class LoginUser extends Component {
         )
     }
 
-    componentDidMount() {
+    componentWillMount () {
         this.init();
     }
     callback= (msg) => {
