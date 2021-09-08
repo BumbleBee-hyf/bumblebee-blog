@@ -27,7 +27,8 @@ export  default class EditArticle extends Component{
                 title: articleObj.title,
                 html: articleObj.html,
                 createTime: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),
-                tag: articleObj.tag
+                tag: articleObj.tag,
+                comments: []
             }
             axios.post('/api/article', param).then(
                 (res) => {

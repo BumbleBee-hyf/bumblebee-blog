@@ -56,7 +56,7 @@ export  default class ArticleDetail extends Component {
                         <Divider />
                         <div class='articleStyle' dangerouslySetInnerHTML={{__html: this.state.articleDetail.html}}></div>
                         <Divider />
-                        <ArticleCommentList/>
+                        <ArticleCommentList id={this.state.articleDetail.id} comments={this.state.articleDetail.comments || []}/>
                     </Content>
                 </Layout>
 

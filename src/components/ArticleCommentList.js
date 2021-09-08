@@ -1,6 +1,7 @@
 import React, {createElement, Component} from  'react';
-import {Comment, Form, Button, Tooltip, Avatar, List, Input} from "antd";
+import {Comment, Form, Button, Tooltip, Avatar, List, Input, message} from "antd";
 import moment from 'moment';
+import axios from "axios";
 
 const { TextArea } = Input;
 
@@ -28,7 +29,6 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
 
 export  default class ArticleCommentList extends Component{
     state = {
-        comments: [],
         submitting: false,
         value: '',
     };
@@ -37,26 +37,37 @@ export  default class ArticleCommentList extends Component{
         if (!this.state.value) {
             return;
         }
-
         this.setState({
             submitting: true,
         });
-
-        setTimeout(() => {
-            this.setState({
-                submitting: false,
-                value: '',
-                comments: [
-                    ...this.state.comments,
-                    {
-                        author: 'Han Solo',
-                        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-                        content: <p>{this.state.value}</p>,
-                        datetime: moment().fromNow(),
-                    },
-                ],
-            });
-        }, 1000);
+        const param = {
+            id: this.props.id,
+            comments: [
+                ...this.props.comments,
+                {
+                    author: 'Han Solo',
+                    content: <pre>{this.state.value}</pre>,
+                    datetime: moment().fromNow(),
+                },
+            ]
+        }
+        axios.put('/api/article/'+ param.id, param).then(
+            (res) => {
+                this.setState({
+                    submitting: false,
+                    value: '',
+                    comments: [
+                        ...this.props.comments,
+                        {
+                            author: 'Han Solo',
+                            content: <pre>{this.state.value}</pre>,
+                            datetime: moment().fromNow(),
+                        },
+                    ],
+                });
+                message.success('评论文章成功！');
+            }
+        )
     };
 
     handleChange = e => {
@@ -66,7 +77,8 @@ export  default class ArticleCommentList extends Component{
     };
 
     render() {
-        const { comments, submitting, value } = this.state;
+        const { submitting, value } = this.state;
+        const comments = this.props.comments;
         const avatarStyle = {
             height: '50px',
             'line-height': '50px',
